@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 
 namespace WebApplication1.Controllers;
@@ -17,7 +18,8 @@ public class TripsController : ControllerBase
     {
 
         var context = new ApbdContext();
-        return Ok();
+        var trips = await _context.Trips.ToListAsync();
+        return Ok(trips);
     }
     
 }
